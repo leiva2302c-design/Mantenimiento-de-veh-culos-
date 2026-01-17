@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenimiento de Vehículos Motorizados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #007bff;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mantenimiento de Vehículos Motorizados</h1>
+        <p>Guía completa para mantener tu vehículo en óptimas condiciones.</p>
+    </header>
+    
+    <nav>
+        <a href="#intro">Introducción</a>
+        <a href="#tipos">Tipos de Mantenimiento</a>
+        <a href="#consejos">Consejos Específicos</a>
+        <a href="#calculadora">Calculadora de Cambio de Aceite</a>
+    </nav>
+    
+    <section id="intro">
+        <h2>Introducción</h2>
+        <p>El mantenimiento regular de los vehículos motorizados es esencial para garantizar la seguridad, prolongar la vida útil del vehículo y reducir costos a largo plazo. Incluye revisiones periódicas, cambios de fluidos y reparaciones preventivas.</p>
+    </section>
+    
+    <section id="tipos">
+        <h2>Tipos de Mantenimiento</h2>
+        <ul>
+            <li><strong>Preventivo:</strong> Realizado de manera programada para evitar fallos, como cambios de aceite y filtros.</li>
+            <li><strong>Correctivo:</strong> Reparaciones después de un problema, como arreglar frenos desgastados.</li>
+            <li><strong>Predictivo:</strong> Basado en datos y sensores para anticipar fallos.</li>
+        </ul>
+    </section>
+    
+    <section id="consejos">
+        <h2>Consejos Específicos</h2>
+        <h3>Cambio de Aceite</h3>
+        <p>Cambia el aceite cada 5,000-10,000 km, dependiendo del fabricante. Usa aceite sintético para mejor rendimiento.</p>
+        <h3>Neumáticos</h3>
+        <p>Revisa la presión mensual y rota los neumáticos cada 8,000-10,000 km. Profundidad mínima de dibujo: 1.6 mm.</p>
+        <h3>Frenos</h3>
+        <p>Inspecciona discos y pastillas cada 10,000 km. Reemplaza si hay vibraciones o ruidos.</p>
+        <h3>Batería</h3>
+        <p>Verifica el voltaje anualmente. Vida útil típica: 3-5 años.</p>
+    </section>
+    
+    <section id="calculadora">
+        <h2>Calculadora de Cambio de Aceite</h2>
+        <p>Ingresa el kilometraje actual y el último cambio para saber si necesitas cambiar el aceite (asumiendo intervalo de 8,000 km).</p>
+        <form id="oilForm">
+            <label for="currentKm">Kilometraje Actual (km):</label>
+            <input type="number" id="currentKm" required>
+            
+            <label for="lastChange">Kilometraje del Último Cambio (km):</label>
+            <input type="number" id="lastChange" required>
+            
+            <button type="button" onclick="calculateOilChange()">Calcular</button>
+        </form>
+        <p id="result"></p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2023 Guía de Mantenimiento de Vehículos. Información general, consulta a un mecánico profesional.</p>
+    </footer>
+    
+    <script>
+        function calculateOilChange() {
+            const currentKm = parseInt(document.getElementById('currentKm').value);
+            const lastChange = parseInt(document.getElementById('lastChange').value);
+            const interval = 8000; // Intervalo en km
+            const kmSinceChange = currentKm - lastChange;
+            
+            if (kmSinceChange >= interval) {
+                document.getElementById('result').innerText = `¡Es hora de cambiar el aceite! Han pasado ${kmSinceChange} km desde el último cambio.`;
+            } else {
+                const remaining = interval - kmSinceChange;
+                document.getElementById('result').innerText = `Aún no es necesario. Te quedan ${remaining} km para el próximo cambio.`;
+            }
+        }
+    </script>
+</body>
+</html>
